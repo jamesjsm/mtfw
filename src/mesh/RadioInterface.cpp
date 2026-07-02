@@ -108,9 +108,9 @@ const RegionInfo regions[] = {
         Channel centres at 869.442/869.525/869.608 MHz,
         10.4 kHz padding on channels, 27 dBm, duty cycle 10%
     */
-    RDEF(EU_868, 869.4f, 869.65f, 10, 27, false, false, PROFILE_EU868, PRESET(LONG_FAST), 0),
-    RDEF(EU_866, 865.6f, 867.6f, 2.5, 27, false, false, PROFILE_LITE, PRESET(LITE_FAST), 0),
-    RDEF(EU_N_868, 869.4f, 869.65f, 10, 27, false, false, PROFILE_NARROW, PRESET(NARROW_SLOW), 1),
+    RDEF(EU_868, 869.4f, 869.65f, 10, 30, false, false, PROFILE_EU868, PRESET(LONG_FAST), 0),
+    RDEF(EU_866, 865.6f, 867.6f, 2.5, 30, false, false, PROFILE_LITE, PRESET(LITE_FAST), 0),
+    RDEF(EU_N_868, 869.4f, 869.65f, 10, 30, false, false, PROFILE_NARROW, PRESET(NARROW_SLOW), 1),
 
     /*
         https://lora-alliance.org/wp-content/uploads/2020/11/lorawan_regional_parameters_v1.0.3reva_0.pdf
