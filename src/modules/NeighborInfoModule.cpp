@@ -2,7 +2,7 @@
 #include "Default.h"
 #include "MeshService.h"
 #include "NodeDB.h"
-#include "RTC.h"
+#include "gps/RTC.h"
 #include <Throttle.h>
 
 NeighborInfoModule *neighborInfoModule;
@@ -110,6 +110,8 @@ void NeighborInfoModule::sendNeighborInfo(NodeNum dest, bool wantReplies)
     // only send neighbours if we have some to send
     if (neighborInfo.neighbors_count > 0) {
         meshtastic_MeshPacket *p = allocDataProtobuf(neighborInfo);
+        if (!p)
+            return;
         p->to = dest;
         p->decoded.want_response = wantReplies;
         p->priority = meshtastic_MeshPacket_Priority_BACKGROUND;
@@ -136,7 +138,7 @@ int32_t NeighborInfoModule::runOnce()
 
 meshtastic_MeshPacket *NeighborInfoModule::allocReply()
 {
-    LOG_INFO("NeighborInfoRequested.");
+    LOG_INFO("NeighborInfoRequested");
     if (lastSentReply && Throttle::isWithinTimespanMs(lastSentReply, 3 * 60 * 1000)) {
         LOG_DEBUG("Skip Neighbors reply since we sent a reply <3min ago");
         ignoreRequest = true; // Mark it as ignored for MeshModule
